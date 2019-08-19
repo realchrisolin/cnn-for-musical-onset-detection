@@ -4,12 +4,12 @@ from music_processor import *
 
 if __name__ == '__main__':
 
-    device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     net = convNet()
     net = net.to(device)
 
     try:
-        with open('./data/pickles/train_data.pickle', mode='rb') as f:
+        with open('./data/pickles/test_data.pickle', mode='rb') as f:
             songs = pickle.load(f)
     except FileNotFoundError:
         with open('./data/pickles/train_reduced.pickle', mode='rb') as f:
